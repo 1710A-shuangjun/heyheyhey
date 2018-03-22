@@ -1,0 +1,31 @@
+{
+	 "swiperimg":[
+	              "./img/j-banner02.jpg",
+	              "./img/j-banner04.jpg"
+	              ],
+	 "bannerimg":"./img/adv.jpg",
+     "tenimg":[
+                  "./img/icon.png",
+                  "./img/icon1.png",
+                  "./img/icon2.png",
+                  "./img/icon3.png",
+                  "./img/icon4.png",
+                  "./img/icon5.png",
+                  "./img/icon6.png",
+                  "./img/icon7.png",
+                  "./img/icon8.png",
+                  "./img/icon9.png"
+                  ],
+      "tenp":[
+                "分类",
+                "清单",
+                "团购",
+                "店铺街",
+                "订单",
+                "拼团",
+                "资金",
+                "购物车",
+                "砍价",
+                "app下载"
+                ]
+}

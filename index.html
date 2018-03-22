@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!--meta标签部分-->
+		<meta charset="UTF-8">
+		<!--移动端标签-->
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<!--作者-->
+		<meta name="author" content="HuangYouJun"/>
+		<!--编辑器-->
+		<meta name="generator" content="HBuilder"/>
+		<!--搜索引擎关键字-->
+		<meta name="keywords" content="嗨购，品牌，Catmi，Cat"/>
+		<!--页面描述-->
+		<meta name="description" content="这是一个年轻人都喜欢的购物网站"/>
+		<!--网站名-->
+		<title>Catmi商城</title>
+		<!--插件引入部分-->
+		<link rel="stylesheet" href="css/Jun.css" />
+		<link rel="stylesheet" href="css/swiper.min.css" />
+		<script type="text/javascript" src="js/swiper.min.js"></script>
+	</head>
+	<body>
+		<!--Swiper轮播图-->
+		<div class="swiper-container">
+			<!--装图片-->
+			<div class="swiper-wrapper">
+				<div class="swiper-slide">
+					<img src="" alt="" />
+				</div>
+				<div class="swiper-slide">
+					<img src="" alt="" />
+				</div>
+			</div>
+			<!--分页器-->
+			<div class="swiper-pagination"></div>
+		</div>
+		<!--banner图-->
+		<div class="banner">
+			<img src="" alt="" />
+		</div>
+		<!--10个小图标部分-->
+		<div class="ten">
+			<div><img src="" alt="" /><p></p></div>
+			<div><img src="" alt="" /><p></p></div>
+			<div><img src="" alt="" /><p></p></div>
+			<div><img src="" alt="" /><p></p></div>
+			<div><img src="" alt="" /><p></p></div>
+			<div><img src="" alt="" /><p></p></div>
+			<div><img src="" alt="" /><p></p></div>
+			<div><img src="" alt="" /><p></p></div>
+			<div><img src="" alt="" /><p></p></div>
+			<div><img src="" alt="" /><p></p></div>
+		</div>
+	</body>
+	<script>
+		
+		// 字体随着页面clientWidth动态更改.
+		window.onload=window.onresize=function(){
+			document.documentElement.style.fontSize=10*(document.documentElement.clientWidth/320)+"px";
+		}
+		
+		// Swiper 初始化
+		var mySwiper = new Swiper(".swiper-container",{
+			autoplay:2000,
+			autoplayDisableOnInteraction:true,
+			speed:500,
+			pagination:".swiper-pagination",
+			paginationClickable:true
+		})
+		
+		// AJAX 原生
+		var xhr;
+		if(window.XMLHttpRequest){
+			xhr=new XMLHttpRequest();
+		}else{
+			xhr=new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		
+		xhr.open("get","http://127.0.0.1:40077",true);
+		xhr.send(null);
+		
+		xhr.onreadystatechange=function(){
+			
+			if(xhr.readyState==4&&xhr.status==200){
+				  
+				  var data = JSON.parse(xhr.responseText);
+				  
+				  // Swiper
+				  var swiperimg = document.querySelectorAll(".swiper-slide img");
+				  for(var i=0;i<data.swiperimg.length;i++){
+				  	swiperimg[i].src=data.swiperimg[i];
+				  }
+				  
+				  // banner
+				  var bannerimg = document.querySelector(".banner img");
+				  
+				  bannerimg.src=data.bannerimg;
+				  
+				  // Ten 小图标部分
+				  var tenimg = document.querySelectorAll(".ten img");
+				  var tenp = document.querySelectorAll(".ten p");
+				  for(var i=0;i<data.tenimg.length;i++){
+				  	tenimg[i].src=data.tenimg[i];
+				  	tenp[i].innerText=data.tenp[i];
+				  }
+				  
+			}
+			
+		}
+	</script>
+</html>
